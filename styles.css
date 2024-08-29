@@ -1,0 +1,102 @@
+html {
+    background-color: rgb(71, 74, 79);
+    width: 100%;
+    height: 100%;
+    font-family: sans-serif;
+}
+:root {
+    --h: 10vh;
+    --w: 25vw;
+}
+
+.corner-btn {
+    width: 130px;
+    height: 130px;
+    border-radius: 500px;
+    position: fixed;
+    right: -2%;
+    bottom: -5%;
+    background-color: rgba(255, 0, 0, 0.294);
+    background-color: rgb(71, 74, 79);
+    border: 0px;
+    color: white;
+    z-index: 1;
+    cursor: pointer;
+}
+.corner-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid gray;
+    border-radius: 500px;
+    z-index: -1;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+}
+.corner-btn:hover::before {
+    transform: scale(6);
+    transition: 1s;
+    opacity: 0;
+}
+.corner-btn:hover {
+    color: transparent;
+    border-color: transparent;
+}
+
+.corner-btn:hover::before {
+    transform: scale(6);
+}
+.corner-btn::before {
+    pointer-events: none;
+    opacity: 1;
+    
+}
+.corner-btn:not(:hover)::before {
+    transition: transform 0.05s ease-in-out;
+    transform: scale(1);
+    border-color: transparent;
+}
+/*  */
+/*  */
+/*  */
+#passwordPrompt {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    height: var(--h);
+    width: var(--w);
+    position: absolute;
+    top: calc(50% - calc(var(--h)/2));
+    left: calc(50% - calc(var(--w)/2));
+    animation: float 5s ease-in-out infinite;
+}
+#passwordPrompt input {
+    appearance: none;
+    text-align: center;
+    width: 100%;
+    font-size: calc(var(--w)/5);
+    border: 2px solid lightgray;
+    border-radius: 300px;
+    background-color: transparent;
+    transition: .1s;
+    color: aliceblue;
+}
+#passwordPrompt input:hover  {
+    border: 4px solid lightblue;
+}
+#passwordPrompt input:focus {
+    outline: none;
+    border: 4px solid rgb(119, 189, 212);
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translatey(0px);
+    }
+    50% {
+        transform: translatey(-20px);
+    }
+}
